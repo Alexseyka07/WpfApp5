@@ -7,15 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="400"
         FocusManager.FocusedElement="{Binding ElementName=MyCanvas}">
-        
+
     <Canvas KeyDown="Canvas_KeyDown" KeyUp="Canvas_KeyUp" 
             x:Name="MyCanvas"
             Focusable="True">
         <Rectangle Name="player"            
                    Fill = "RoyalBlue" Width="50"
                    Height="70"
-                   Canvas.Left="113"
-                   Canvas.Top="36"/>
+                   Canvas.Left="184"
+                   Canvas.Top="38"/>
         <Rectangle Fill = "Orange" Width="174"
                    Height="38"
                    Canvas.Left="122"
@@ -32,10 +32,12 @@
             Canvas.Left="176"
             Canvas.Top="439" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Rectangle Fill = "Green" Width="400"                   
-            Height="10"                   
+            Height="10"   
+                   Tag="platform"
             Canvas.Top="574" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Rectangle Fill = "Gold" Width="26"                   
-            Height="25"                   
+            Height="25"       
+                   Tag="coin"
             Canvas.Top="266" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="120" RenderTransformOrigin="0.5,0.5" >
             <Rectangle.RenderTransform>
                 <TransformGroup>
@@ -47,7 +49,8 @@
             </Rectangle.RenderTransform>
         </Rectangle>
         <Rectangle Fill = "Gold" Width="26"                   
-            Height="25"                   
+            Height="25"    
+                   Tag="coin"
             Canvas.Top="130" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="263" RenderTransformOrigin="0.5,0.5" >
             <Rectangle.RenderTransform>
                 <TransformGroup>
@@ -59,7 +62,8 @@
             </Rectangle.RenderTransform>
         </Rectangle>
         <Rectangle Fill = "Gold" Width="26"                   
-            Height="25"                   
+            Height="25" 
+                   Tag="coin"
             Canvas.Top="526" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="32" RenderTransformOrigin="0.5,0.5" >
             <Rectangle.RenderTransform>
                 <TransformGroup>

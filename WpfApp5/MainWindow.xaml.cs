@@ -25,14 +25,14 @@ namespace WpfApp5
         //fields
         private bool bLeft;
         private bool bRight;
-        private int drop = 10;
-
+        private int drop = 0;
+        private int speed = 1;
         public MainWindow()
         {
             InitializeComponent();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
-            timer.Interval = TimeSpan.FromMilliseconds(20);
+            timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Start();
         }
 
@@ -51,19 +51,47 @@ namespace WpfApp5
             {
                 if (rect.Tag != null)
                 {
+                    Rect rectCollision = new Rect(Canvas.GetLeft(rect),
+                                               Canvas.GetTop(rect), rect.Width
+                                               , rect.Height);
                     if (rect.Tag.ToString() == "platform")
                     {
-                        Rect rectCollision = new Rect(Canvas.GetLeft(rect),
-                                                Canvas.GetTop(rect), rect.Width
-                                                , rect.Height);
+                       
 
                         if (playerCollision.IntersectsWith(rectCollision))
+                        {
                             drop = 0;
+                            Canvas.SetTop(player, Canvas.GetTop(rect) - player.Height);
+                        }
+                        else
+                        {
+                            drop = 10;
+                        }
+                                                    
+                    }
+                    if(rect.Tag.ToString() == "coin")
+                    {
+                        if (playerCollision.IntersectsWith(rectCollision))
+                        {
+                            rect.Fill = Brushes.White;
 
+                            rect.Visibility = Visibility.Hidden;
+                           
+                        }
+                       
                     }
                 }
                 
                     
+            }
+
+            if (bLeft)
+            {
+                Canvas.SetLeft(player, Canvas.GetLeft(player) - speed);
+            }
+            if (bRight)
+            {
+                Canvas.SetLeft(player, Canvas.GetLeft(player) + speed);
             }
         }
 
